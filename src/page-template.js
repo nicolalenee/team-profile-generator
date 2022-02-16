@@ -1,55 +1,27 @@
-// generate manager card
-const generateManagerCard = managerInfo => {
-  return `
-  <div class="card m-6">
-      <div class="card-header is-flex is-flex-direction-column has-background-primary">
-        <h2 class="card-header-title is-size-5 has-text-white is-centered">Nicola || Manager</h2>
-      </div>
-
-      <div class="card-content">
-        <div id="id-number" class="box">
-          <p class="is-size-7">>ID: 1</p>
-        </div>
-        <div id="email" class="box">
-          <p class="is-size-7">Email: <span>
-            <a class="is-size-7" href = "mailto: marblenicola@gmail.com">marblenicola@gmail.com</a>
-          </span></p> 
-          
-        </div>
-        <div id="github" class="box">
-          <p class="is-size-7">Github: <span>
-            <a href="http://github.com/nicolalenee" target="_blank">nicolalenee</a>
-          </span></p>
-        </span>
-        </div>
-      </div>
-    </div>
-  
-  `;
-}
 
 // generate employee cardd
-const generateEmployeeCard = employeeInfo => {
-  if (employeeInfo === 'Engineer') {
+const generateEmployeeCard = () => {
+  
+  if (this.employees.getRole() === 'Engineer') {
     return `
     <div class="card m-6">
       <div class="card-header is-flex is-flex-direction-column has-background-primary">
-        <h2 class="card-header-title is-size-5 has-text-white is-centered">Nicola || Engineer</h2>
+        <h2 class="card-header-title is-size-5 has-text-white is-centered">${this.employees.getName()} || ${this.employees.getRole()}}</h2>
       </div>
 
       <div class="card-content">
         <div id="id-number" class="box">
-          <p class="is-size-7">ID: 1</p>
+          <p class="is-size-7">ID: ${this.employees.getId()}</p>
         </div>
         <div id="email" class="box">
           <p class="is-size-7">Email: <span>
-            <a class="is-size-7" href = "mailto: marblenicola@gmail.com">marblenicola@gmail.com</a>
+            <a class="is-size-7" href = "mailto: ${this.employees.getEmail()}">${this.employees.getEmail()}</a>
           </span></p> 
           
         </div>
         <div id="github" class="box">
           <p class="is-size-7">Github: <span>
-            <a href="http://github.com/nicolalenee" target="_blank">nicolalenee</a>
+            <a href="http://github.com/${this.engineers.getGithub()}" target="_blank">${this.engineers.getGithub()}</a>
           </span></p>
         </span>
         </div>
@@ -57,26 +29,26 @@ const generateEmployeeCard = employeeInfo => {
     </div>
     `;
 
-  } else if (employeeInfo === 'Intern') {
+  } else if (this.employees.getRole() === 'Intern') {
     return `
     <div class="card m-6">
       <div class="card-header is-flex is-flex-direction-column has-background-primary">
-        <h2 class="card-header-title is-size-5 has-text-white is-centered">Nicola || Intern</h2>
+        <h2 class="card-header-title is-size-5 has-text-white is-centered">${this.employees.getName()} || ${this.employees.getRole()}</h2>
       </div>
 
       <div class="card-content">
         <div id="id-number" class="box">
-          <p class="is-size-7">ID: 1</p>
+          <p class="is-size-7">ID: ${this.employees.getId()}</p>
         </div>
         <div id="email" class="box">
           <p class="is-size-7">Email: <span>
-            <a class="is-size-7" href = "mailto: marblenicola@gmail.com">marblenicola@gmail.com</a>
+            <a class="is-size-7" href = "mailto: ${this.employees.getEmail()}">${this.employees.getEmail()}</a>
           </span></p> 
           
         </div>
         <div id="github" class="box">
           <p class="is-size-7">Github: <span>
-            <a href="http://github.com/nicolalenee" target="_blank">nicolalenee</a>
+            <a href="http://github.com/${this.employees.getGithub()}" target="_blank">${this.employees.getGithub()}</a>
           </span></p>
         </span>
         </div>
@@ -85,14 +57,13 @@ const generateEmployeeCard = employeeInfo => {
     `;
 
   } {
-    return;
+    return'' ;
   }
 }
 
 // generate full hmtl 
 
-module.exports = templateData => {
-  const { manager, employee} = templateData;
+module.exports = employees => {
 
   return `
   <!DOCTYPE html>
@@ -117,8 +88,28 @@ module.exports = templateData => {
 
     <main class="section is-flex is-flex-wrap-wrap is-align-content-flex-start is-justify-content-center has-background-primary-light">
 
-      ${generateManagerCard(manager)}
-      ${generateEmployeeCard(employee)}
+      <div class="card m-6">
+        <div class="card-header is-flex is-flex-direction-column has-background-primary">
+          <h2 class="card-header-title is-size-5 has-text-white is-centered">${this.manager.getName()} || Manager</h2>
+        </div>
+
+        <div class="card-content">
+         <div id="id-number" class="box">
+          <p class="is-size-7">>ID: ${this.manager.getId()}</p>
+        </div>
+
+        <div id="email" class="box">
+          <p class="is-size-7">Email: <span>
+          <a class="is-size-7" href = "mailto: ${this.manager.getEmail()}">${this.manager.getEmail}</a>
+          </span></p> 
+        </div>
+
+        <div id="office-number" class="box">
+          <p class="is-size-7">Office Number: ${this.manager.getOfficeNumber()}</p>
+        </div>
+      </div>
+
+      ${generateEmployeeCard()}
 
     </main>
 
