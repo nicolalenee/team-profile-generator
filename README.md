@@ -13,5 +13,5 @@ This application was created with the help of Node.js and the jest, fs, and inqu
 for demonstration purposes, a video showing use of the application can be found here: [https://bootcampspot.instructuremedia.com/embed/d3261308-a178-47bf-b547-bb0c19cf4eb3]
 <img width="1552" alt="image" src="https://user-images.githubusercontent.com/86696492/154861063-070aa1ac-5271-4991-b42a-fd8ced22270c.png">
 ## Questions? 
-[GitHub ❤️:] [htttp://github.com/nicolalenee]
+[GitHub ❤️:] [htttp://github.com/nicolalenee]  
 [Repository 🗄:] [https://github.com/nicolalenee/team-profile-generator]
